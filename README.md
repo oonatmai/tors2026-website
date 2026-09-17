@@ -22,7 +22,8 @@ website/
 > Sheet: https://docs.google.com/spreadsheets/d/1gWVdI9cQ9F14j9MoSwAZqM3yZqzxywametCPK57skhA/edit
 > Script project: https://script.google.com/u/3/home/projects/1yr_ogGLZ4Ds0iu_FkUOWTVP0MmQAu-rPfZgj-imR63NDwNYS2Oh5UZsw/edit
 > The earlier deployment on the personal Gmail account is no longer referenced by the site.
-> Before launch: set `SITE_URL` in the script's CONFIG to the public address and deploy a new version.
+> Live site: https://oonatmai.github.io/tors2026-website/ (GitHub Pages from https://github.com/oonatmai/tors2026-website,
+> branch main; every push redeploys within ~1 minute). `SITE_URL` in the script points there (version 3).
 
 1. Sign in to Google with the account that should own the registrations (this account also
    sends the confirmation emails). Create a new Google Sheet, name it

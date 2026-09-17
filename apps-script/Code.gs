@@ -21,7 +21,7 @@ var CONFIG = {
   ORGANISATION: 'Department of Orthodontics, Faculty of Dentistry, Chulalongkorn University',
   REPLY_TO: '',   // departmental address for replies; '' = replies go to the account running this script
   SENDER_NAME: '6th Thai Orthodontic Resident Symposium Organising Committee',
-  SITE_URL: 'http://localhost:8123',              // TODO before launch: the public site address (used in the presenter link)
+  SITE_URL: 'https://oonatmai.github.io/tors2026-website',   // public site address (used in the presenter link); change again if a custom domain is added
   EDIT_DEADLINE: '2026-11-20T23:59:59+07:00',     // presenters cannot edit title/slides after this
   DRIVE_FOLDER_NAME: 'TORS2026 presenter uploads', // created in the script owner's Drive
   MAX_UPLOAD_MB: 20,
