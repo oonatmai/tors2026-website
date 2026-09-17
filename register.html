@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registration · 6th Thai Orthodontic Resident Symposium 2026</title>
+<meta name="description" content="6th Thai Orthodontic Resident Symposium 2026, Department of Orthodontics, Faculty of Dentistry, Chulalongkorn University. Free registration.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+<script>var _t=new URLSearchParams(location.search).get("theme")||(function(){try{return localStorage.getItem("tors-theme")}catch(e){return null}})();if(_t==="light")document.documentElement.setAttribute("data-theme",_t);if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&"IntersectionObserver" in window){document.documentElement.classList.add("js");setTimeout(function(){document.documentElement.classList.remove("js")},3000)}</script>
+<link rel="stylesheet" href="css/style.css?v=20260917e">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav-wrap">
+    <a class="brand" href="index.html"><img src="assets/orthocu-600.png" alt="OrthoCU, Department of Orthodontics, Chulalongkorn University"><span>6th Thai Orthodontic<br>Resident Symposium <b>2026</b></span></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="programme.html">Programme</a>
+      <a href="speakers.html">Special Lectures</a>
+      <a href="call.html">Case Presentations</a>
+      <a href="venue.html">Venue</a>
+      <a href="contact.html">Contact</a>
+      <a href="register.html" class="btn-nav">Register</a>
+    </nav>
+  </div>
+</header>
+<section class="page-title"><div class="wrap">
+  <h1>Registration</h1>
+  <p>Registration is free. Fields marked <span style="color:#b3261e">*</span> are required. The name and university you enter here are printed on your certificate exactly as written.</p>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+
+  <div id="closedBox" class="closed card" hidden>
+    <h2>Registration is closed</h2>
+    <p>Thank you for your interest.<span data-contact> For late enquiries please email <a data-mailto href="#"></a>.</span></p>
+  </div>
+
+  <div id="successBox" class="success" hidden>
+    <div class="big"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-6px;margin-right:.4rem"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>Registration received</div>
+    <p>Thank you! A confirmation email is on its way to <strong id="okEmail"></strong>. Please check your spam folder if it does not arrive within a few minutes.</p>
+    <dl>
+      <dt>Registration ID</dt><dd id="okId"></dd>
+      <dt>Role</dt><dd id="okRole"></dd>
+      <dt>Case title</dt><dd id="okCase"></dd>
+      <dt>Name on certificate</dt><dd id="okName"></dd>
+      <dt>Affiliation on certificate</dt><dd id="okUni"></dd>
+    </dl>
+    <div id="presenterBox" class="notice info" hidden>
+      <strong>Your presenter page</strong><br>
+      Use this private link to add the specific title of your case and upload your slides. It is also in your confirmation email.<br>
+      <a id="presenterLink" href="#" style="word-break:break-all"></a>
+    </div>
+    <p class="muted small">If any detail above is wrong, reply to the confirmation email quoting your Registration ID and we will correct it.</p>
+    <p><a class="btn navy" href="index.html">Back to home</a></p>
+  </div>
+
+  <div id="formWrap" class="form-layout single">
+    <form id="regForm" class="reg" novalidate>
+      <div id="formError" class="notice error" hidden></div>
+
+      <fieldset>
+        <legend>Your details</legend>
+        <div class="row">
+          <div class="field" style="max-width:180px">
+            <label for="title">Title <span class="req">*</span></label>
+            <select id="title" name="title" required>
+              <option value="">Select…</option>
+              <option>Mr.</option><option>Ms.</option><option>Dr.</option>
+              <option>Asst. Prof.</option><option>Assoc. Prof.</option><option>Prof.</option>
+            </select>
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="first_name">First name <span class="req">*</span></label>
+            <input type="text" id="first_name" name="first_name" autocomplete="given-name" maxlength="80" required>
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="surname">Surname <span class="req">*</span></label>
+            <input type="text" id="surname" name="surname" autocomplete="family-name" maxlength="80" required>
+            <span class="field-error"></span>
+          </div>
+        </div>
+        <p class="hint" style="margin:-.4rem 0 1rem">Please write your name in English letters, exactly as it should appear on your certificate (e.g. Somsri Jaidee).</p>
+        <div class="row">
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" maxlength="120" required>
+            <span class="hint">Your confirmation and certificate will be sent here.</span>
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="30" required>
+            <span class="field-error"></span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Affiliation</legend>
+        <div class="field">
+          <label for="university">University <span class="req">*</span></label>
+          <select id="university" name="university" required>
+            <option value="">Select…</option>
+            <option>Chulalongkorn University</option>
+            <option>Mahidol University</option>
+            <option>Chiang Mai University</option>
+            <option>Khon Kaen University</option>
+            <option>Prince of Songkla University</option>
+            <option>Srinakharinwirot University</option>
+            <option>Naresuan University</option>
+            <option>Walailak University</option>
+            <option>Other</option>
+          </select>
+          <span class="field-error"></span>
+        </div>
+        <div class="field" id="otherWrap" hidden>
+          <label for="university_other">Name of university / institution <span class="req">*</span></label>
+          <input type="text" id="university_other" name="university_other" maxlength="120">
+          <span class="field-error"></span>
+        </div>
+        <div class="field">
+          <label for="position">Position <span class="req">*</span></label>
+          <select id="position" name="position" required>
+            <option value="">Select…</option>
+            <option>Resident – Year 1</option>
+            <option>Resident – Year 2</option>
+            <option>Resident – Year 3</option>
+            <option>Faculty member</option>
+            <option>PhD student</option>
+            <option>Master's student</option>
+            <option>Other</option>
+          </select>
+          <span class="field-error"></span>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Participation</legend>
+        <div class="radios">
+          <label><input type="radio" name="role" value="participant"> <span><strong>Participant</strong><br><span class="hint">Attend the symposium. Certificate of Participation.</span></span></label>
+          <label><input type="radio" name="role" value="oral"> <span><strong>Case presenter</strong><br><span class="hint">Present your university's clinical case (one case per university, 15-minute presentation). Certificate of Presentation.</span></span></label>
+        </div>
+        <span id="roleError" class="field-error" style="display:none">Please choose how you will take part.</span>
+        <div class="field" id="titleWrap" hidden style="margin-top:1rem">
+          <label for="presentation_title">Case title <span class="hint">(optional now, can be added or changed later on your presenter page)</span></label>
+          <input type="text" id="presentation_title" name="presentation_title" maxlength="300" placeholder="e.g. Skeletal Class III camouflage in an adult patient" autocomplete="off">
+          <span class="field-error"></span>
+          <p class="hint" style="margin:.9rem 0 .3rem"><strong>Cases registered so far:</strong> <span id="caseTotal">loading…</span>. Only one case presenter per university can register.</p>
+          <ul id="caseList" class="case-list status" aria-live="polite"></ul>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Other</legend>
+        <div class="field">
+          <label for="dietary">Dietary requirements <span class="muted">(optional)</span></label>
+          <input type="text" id="dietary" name="dietary" maxlength="200" placeholder="e.g. vegetarian, halal, no seafood">
+        </div>
+        <label class="check"><input type="checkbox" id="consent" name="consent"> <span>I confirm that my name and university above are spelled correctly as they should appear on my certificate, and I agree to the organisers storing my details for this event. <span class="req">*</span></span></label>
+        <span id="consentError" class="field-error" style="display:none">Please confirm your details to continue.</span>
+      </fieldset>
+
+      <div class="hp" aria-hidden="true"><label>Website<input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+      <button type="submit" id="submitBtn" class="btn navy">Submit registration</button>
+    </form>
+
+  </div>
+
+</div></section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <img class="footer-logo" src="assets/orthocu-white.png" alt="OrthoCU"><br>
+      <strong>6th Thai Orthodontic Resident Symposium 2026</strong><br>
+      Department of Orthodontics, Faculty of Dentistry, Chulalongkorn University
+    </div>
+    <div>
+      <span data-contact>Questions? <a data-mailto href="#"></a><br></span>
+      <span class="small">Registration is free · Deadline: <span data-config="REGISTRATION_DEADLINE"></span></span>
+    </div>
+  </div>
+</footer>
+<script src="js/config.js?v=20260917e"></script>
+<script src="js/main.js?v=20260917e"></script>
+<script src="js/theme-switcher.js?v=20260917e"></script>  <!-- TEMPORARY: prototype theme switcher, delete this line to remove -->
+<script src="js/register.js?v=20260917e"></script>
+</body>
+</html>
