@@ -107,8 +107,8 @@ Stylesheet and script links carry a version tag (`?v=20260909b`). When you chang
 anything in `js/`, bump the tag in every page (search and replace) before uploading, so visitors'
 browsers fetch the new files instead of a cached copy.
 
-## Prototype theme switcher (temporary)
+## Theme
 
-Every page loads `js/theme-switcher.js`, which adds a floating "Theme" button to compare the two
-pink & navy variants (navy page, as on the poster, or light page); the choice is remembered in the browser. Before launch, delete the `theme-switcher.js`
-script tag from each page and set the chosen palette as the default at the top of `css/style.css`.
+The site always uses the poster look (pink hero band, navy page). The prototype theme switcher was
+removed on 17 Sep 2026; the unused `html[data-theme="light"]` rules stay in `css/style.css` in case a
+light variant is wanted later.
