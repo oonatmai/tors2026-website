@@ -370,13 +370,7 @@ html[data-theme="light"] .hero-wave { fill: var(--bg); }
 .session span { display: block; font-size: .88rem; color: var(--muted); margin-top: .1rem; }
 html:not([data-theme]) .session, html:not([data-theme]) .session span { color: var(--ink); }
 html:not([data-theme]) .session span { color: var(--muted); }
-/* poster-style speaker cards on the navy page: no white panel, pastel lecture box */
-html:not([data-theme]) .card.speaker { background: transparent; box-shadow: none; color: #fff; padding-top: 1rem; }
-html:not([data-theme]) .card.speaker h3 { color: #fff; }
-html:not([data-theme]) .speaker .deg { color: #fff; }
-html:not([data-theme]) .speaker .aff { color: #d5dbeb; }
-html:not([data-theme]) .speaker .time { color: #c9d0e4; }
-html:not([data-theme]) .speaker .pill { background: #ffd3e3; color: var(--pink-deep); }
+
 html:not([data-theme]) .hero .eyebrow { color: rgba(255,255,255,.85); }
 html:not([data-theme]) .hero h1 .year { color: #fff; opacity: .85; }
 html:not([data-theme]) .hero .btn { background: var(--navy); color: #fff; }
@@ -398,9 +392,9 @@ html:not([data-theme]) th { background: var(--pink); border-bottom: 0; }
 html:not([data-theme]) table.stack tr.block td { background: var(--blush); }
 html:not([data-theme]) .site-footer { background: #0f172e; color: rgba(255,255,255,.8); }
 html:not([data-theme]) .site-footer a { color: var(--pink-soft); }
-html:not([data-theme]) .speaker .photo { border-color: #fff; box-shadow: 0 12px 30px rgba(0,0,0,.35); width: 170px; height: 170px; }
-html:not([data-theme]) .speaker .talk { background: #fde9f1; color: var(--navy); border-radius: 16px; }
-html:not([data-theme]) .speaker .talk small { color: var(--pink-deep); }
+html:not([data-theme]) .speaker .photo { border-color: #fff; box-shadow: 0 0 0 4px var(--pink), 0 10px 26px rgba(0,0,0,.25); }
+html:not([data-theme]) .speaker .talk { background: var(--navy); color: #fff; }
+html:not([data-theme]) .speaker .talk small { color: var(--pink-soft); }
 html:not([data-theme]) .badge.na { background: #eee; color: #777; }
 html:not([data-theme]) ol, html:not([data-theme]) ul { color: inherit; }
 html:not([data-theme]) .site-header a, html:not([data-theme]) .brand { color: var(--navy); }
