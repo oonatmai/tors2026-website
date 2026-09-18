@@ -348,7 +348,10 @@ html:not([data-theme]) :is(.card, form.reg, table, .success) a { color: var(--pi
 html:not([data-theme]) .site-header { border-bottom: 0; }
 html:not([data-theme]) .hero { background: linear-gradient(120deg, rgba(201,23,94,.78) 0%, rgba(220,47,122,.62) 55%, rgba(230,84,154,.55) 100%), url(../assets/hero-bg.jpg) center 40% / cover no-repeat #d8286f; padding-bottom: clamp(5rem, 12vw, 8.5rem); }
 html:not([data-theme]) .hero-art { opacity: .16; }
-.hero-wave { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: clamp(34px, 6.5vw, 90px); display: block; fill: var(--navy); z-index: 0; pointer-events: none; }
+.hero { border-bottom: 2px solid var(--navy); }   /* hides the sub-pixel seam under the wave */
+html[data-theme="light"] .hero { border-bottom-color: var(--bg); }
+.hero-wave { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: clamp(44px, 6.5vw, 90px); display: block; fill: var(--navy); z-index: 0; pointer-events: none; overflow: visible; }
+.hero-wave .wire-brackets { filter: drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
 html[data-theme="light"] .hero-wave { fill: var(--bg); }
 /* poster-style date band (home) */
 .glance { padding: 0; margin-top: -1.2rem; position: relative; z-index: 2; }
