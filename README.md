@@ -109,9 +109,7 @@ browsers fetch the new files instead of a cached copy.
 
 ## Theme
 
-Home hero background: `assets/hero-bg-b.jpg` (Chulalongkorn University Auditorium at night by Supanut Arunoprayote,
-CC BY 3.0, Wikimedia Commons; credit line in the home footer). Alternative `assets/hero-bg-a.jpg` (Mahavajiravudh Building
-by BunBn, CC BY-SA 4.0) – if you switch to it, change the credit line too. Both are pink duotones made with Pillow.
+Home hero background: `assets/hero-bg.jpg`, a pink duotone of the Faculty of Dentistry building photo (Dent-6.webp) made with Pillow.
 
 The site always uses the poster look (pink hero band, navy page). The prototype theme switcher was
 removed on 17 Sep 2026; the unused `html[data-theme="light"]` rules stay in `css/style.css` in case a
