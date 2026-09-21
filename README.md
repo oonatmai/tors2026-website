@@ -12,22 +12,19 @@ website/
   js/main.js           navigation
   js/register.js       form logic
   assets/logo.svg      placeholder logo; replace with your own (keep the file name or edit the pages)
-  apps-script/Code.gs  backend, pasted into Google Apps Script
 ```
 
 ## 1. Set up the backend (once, ~5 minutes)
 
-> **Current live backend (17 Sep 2026):** owned by the university account
-> `6678306732@student.chula.ac.th` (Workspace: 1,500 emails/day).
-> The earlier deployment on the personal Gmail account is no longer referenced by the site.
-> Live site: https://oonatmai.github.io/tors2026-website/ (GitHub Pages from https://github.com/oonatmai/tors2026-website,
-> branch main; every push redeploys within ~1 minute). `SITE_URL` in the script points there (version 3).
+> The backend source (`Code.gs`) is kept outside this repository, in the organisers' private project folder
+> (`Symposium2026/apps-script/Code.gs`), together with the Sheet and Apps Script links. Live site:
+> https://oonatmai.github.io/tors2026-website/ (GitHub Pages, branch main; every push redeploys within ~1 minute).
 
 1. Sign in to Google with the account that should own the registrations (this account also
    sends the confirmation emails). Create a new Google Sheet, name it
    `6th Thai Orthodontic Resident Symposium 2026 Registrations`.
 2. Menu **Extensions → Apps Script**. Delete the default code, paste the whole of
-   `apps-script/Code.gs`, and edit the `CONFIG` block at the top (event date, reply-to address).
+   `Code.gs` (from the private project folder), and edit the `CONFIG` block at the top (event date, reply-to address).
    Save (⌘S).
 3. In the toolbar choose the function **`setup`** and press **Run**. Google asks for
    permission to edit the Sheet, send email and use Drive (for slide uploads); accept (choose *Advanced → Go to … (unsafe)* if
