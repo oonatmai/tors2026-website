@@ -234,6 +234,7 @@ input.invalid, select.invalid { border-color: var(--error); }
 .case-list li { display: flex; justify-content: space-between; align-items: center; gap: .8rem; padding: .6rem .8rem; border: 1px solid var(--line); border-radius: 10px; background: #fff; cursor: pointer; font-size: .92rem; transition: border-color .2s, background .2s; }
 .case-list li:hover { border-color: var(--pink); }
 .case-list.status li { cursor: default; }
+.case-list.status li.na .case-title { color: var(--muted); }
 .case-list.status li:hover { border-color: var(--line); }
 .case-list li.selected { border-color: var(--navy); background: var(--blush); }
 .case-list .badge { flex: none; font-size: .72rem; font-weight: 700; letter-spacing: .03em; padding: .25rem .6rem; border-radius: 999px; white-space: nowrap; }
@@ -357,6 +358,7 @@ html[data-theme="light"] .hero { border-bottom-color: var(--bg); }
 html[data-theme="light"] .hero-wave { fill: var(--bg); }
 /* poster-style date band (home) */
 .glance { padding: 0; margin-top: -1.2rem; position: relative; z-index: 2; }
+@media (max-width: 900px) { .glance { margin-top: 1.1rem; } }   /* keep the date band clear of the bracket wire on phones/tablets */
 .date-band { background: linear-gradient(120deg, #f7bcd3 0%, #ef8ab7 55%, #e8659f 100%); border-radius: 22px; padding: 1.3rem 1.3rem 1.2rem; color: var(--navy); box-shadow: 0 14px 34px rgba(0,0,0,.28); }
 .date-head { display: flex; align-items: center; justify-content: center; gap: .9rem; margin-bottom: 1rem; }
 .date-head .day { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; font-size: clamp(3.2rem, 8vw, 4.6rem); line-height: .9; color: var(--pink-deep); }

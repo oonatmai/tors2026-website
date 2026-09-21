@@ -89,7 +89,8 @@ and build the URL above.
 There is no preset case list. A case presenter registers with an optional case title and can add or
 change it on the presenter page until `EDIT_DEADLINE`. The form calls `?action=status`, which returns
 the number of cases registered so far and, for each university, whether it already has a case presenter
-(one per university is enforced by the backend).
+(one per university is enforced by the backend). Universities listed in `NOT_PRESENTING` in `Code.gs` (currently Chiang Mai University)
+are shown as "not presenting this year", left out of the count, and cannot register a case presenter.
 
 ## Notes and limits
 

@@ -24,14 +24,15 @@
     var ul = $("caseList"); ul.innerHTML = "";
     if (!data) { $("caseTotal").textContent = "unavailable at the moment"; return; }
     var n = data.total || 0, all = data.universities || [];
-    $("caseTotal").textContent = n === 0 ? "none yet" : n + " of " + all.length + " universities";
+    var presenting = all.filter(function (u) { return !u.not_presenting; }).length;
+    $("caseTotal").textContent = n === 0 ? "none yet" : n + " of " + presenting + " universities";
     all.forEach(function (u) {
       var li = document.createElement("li");
       li.innerHTML = '<span class="case-title"></span><span class="badge"></span>';
       li.querySelector(".case-title").textContent = u.name;
       var b = li.querySelector(".badge");
-      b.textContent = u.registered ? "case registered" : "open";
-      b.className = "badge " + (u.registered ? "taken" : "free");
+      if (u.not_presenting) { b.textContent = "not presenting this year"; b.className = "badge na"; li.classList.add("na"); }
+      else { b.textContent = u.registered ? "case registered" : "open"; b.className = "badge " + (u.registered ? "taken" : "free"); }
       ul.appendChild(li);
     });
   }
