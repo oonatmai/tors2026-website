@@ -88,6 +88,10 @@ a { color: var(--navy); }
 .btn.danger:hover { background: #8f1d17; }
 .btn.small { padding: .45rem .9rem; font-size: .88rem; }
 .stack-btns { display: grid; gap: .5rem; }
+form.reg fieldset { min-width: 0; }                                   /* fieldsets default to min-content width and can overflow on phones */
+input[type=file] { width: 100%; max-width: 100%; }
+#presenterForm, #attendanceCard { margin-top: 1.6rem; }
+.refreshing { opacity: .6; font-size: .85rem; }
 .stack-btns .btn { width: 100%; }
 .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
 @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }

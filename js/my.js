@@ -13,6 +13,8 @@
     if (id && key) localStorage.setItem(STORE, JSON.stringify({ id: id, key: key }));
     else { var saved = JSON.parse(localStorage.getItem(STORE) || "null"); if (saved && saved.id && saved.key) { id = saved.id; key = saved.key; } }
   } catch (e) { /* storage unavailable */ }
+  var CACHE = STORE + "-profile";
+  function cacheProfile(p) { try { localStorage.setItem(CACHE, JSON.stringify(p)); } catch (e) {} }
   var myLink = location.origin + location.pathname + "?id=" + encodeURIComponent(id) + "&key=" + encodeURIComponent(key);
 
   function fail(msg) {
@@ -34,7 +36,7 @@
 
   // ---------------------------------------------------------------- render
   function render(p) {
-    profile = p;
+    profile = p; if (p && p.ok) cacheProfile(p);
     $("loading").hidden = true; $("profile").hidden = false;
     var presenter = p.role === "oral";
     $("pId").textContent = p.id; $("pUni").textContent = p.university; $("pEmail").textContent = p.email || "";
@@ -47,7 +49,7 @@
     var cancelled = (p.status || "").toLowerCase() === "cancelled";
     $("cancelledBox").hidden = !cancelled;
     $("attendanceCard").hidden = cancelled;
-    $("cancelConfirm").hidden = true;
+    $("cancelConfirm").hidden = true; $("cancelBtn").hidden = false;
 
     var regLocked = !!p.reg_locked;
     $("regLockedBox").hidden = !regLocked;
@@ -84,9 +86,18 @@
   }
   ["specific_title", "summary", "slides_link"].forEach(function (i) { $(i).addEventListener("input", updateChecklist); });
 
-  // ---------------------------------------------------------------- load
-  api({ action: "profile" }).then(function (p) { p.ok ? render(p) : fail(p.error); })
-    .catch(function () { fail("Could not reach the server. Please try again in a moment."); });
+  // ---------------------------------------------------------------- load (instant from cache, then refresh)
+  var cached = null;
+  try { cached = JSON.parse(localStorage.getItem(CACHE) || "null"); } catch (e) {}
+  if (cached && cached.ok && cached.id === id) {
+    render(cached);
+    var note = document.createElement("p"); note.className = "hint refreshing"; note.id = "refreshNote"; note.textContent = "Checking for updates\u2026";
+    $("profile").parentElement.insertBefore(note, $("profile"));
+  }
+  api({ action: "profile" }).then(function (p) {
+    var n = $("refreshNote"); if (n) n.remove();
+    if (p.ok) { cacheProfile(p); render(p); } else if (!cached) fail(p.error); else showError(p.error);
+  }).catch(function () { var n = $("refreshNote"); if (n) n.remove(); if (!cached) fail("Could not reach the server. Please try again in a moment."); });
 
   // ---------------------------------------------------------------- personal details
   $("profileForm").addEventListener("submit", async function (ev) {
