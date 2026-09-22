@@ -1,0 +1,14 @@
+{
+  "name": "TORS 2026 – My registration",
+  "short_name": "TORS 2026",
+  "description": "6th Thai Orthodontic Resident Symposium 2026 – your registration page",
+  "start_url": "my.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1f2b4d",
+  "theme_color": "#d8286f",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

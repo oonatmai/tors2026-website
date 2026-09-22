@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My registration · 6th Thai Orthodontic Resident Symposium 2026</title>
+<meta name="description" content="Your private registration page for the 6th Thai Orthodontic Resident Symposium 2026.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#d8286f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TORS 2026">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+<script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&"IntersectionObserver" in window){document.documentElement.classList.add("js");setTimeout(function(){document.documentElement.classList.remove("js")},3000)}</script>
+<link rel="stylesheet" href="css/style.css?v=20260922f">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav-wrap">
+    <a class="brand" href="index.html"><img src="assets/orthocu-600.png" alt="OrthoCU, Department of Orthodontics, Chulalongkorn University"><span>6th Thai Orthodontic<br>Resident Symposium <b>2026</b></span></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="programme.html">Programme</a>
+      <a href="speakers.html">Special Lectures</a>
+      <a href="call.html">Case Presentations</a>
+      <a href="venue.html">Venue</a>
+      <a href="contact.html">Contact</a>
+      <a href="register.html" class="btn-nav">Register</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-title"><div class="wrap">
+  <h1>My registration</h1>
+  <p>Your private page. Check the name that will be printed on your certificate, update your dietary requirements, or let us know if you can no longer attend. Case presenters also manage their case and slides here.</p>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+
+  <div id="loading" class="notice info">Loading your details…</div>
+  <div id="invalid" class="card" hidden>
+    <h3>This link is not valid</h3>
+    <p id="invalidMsg"></p>
+    <p>Please open the link from your confirmation email. <span data-contact>If you no longer have it, email <a data-mailto href="#"></a> quoting your name and university and we will resend it.</span></p>
+  </div>
+
+  <div id="profile" class="form-layout" hidden>
+    <div>
+      <div id="cancelledBox" class="notice error" hidden>
+        <strong>Your registration is cancelled.</strong> You will not receive a certificate and your seat is released.
+        Changed your mind? <button type="button" id="reinstateBtn" class="btn navy small" style="margin-left:.4rem">Reinstate my registration</button>
+      </div>
+      <div id="regLockedBox" class="notice info" hidden></div>
+      <div id="formError" class="notice error" hidden></div>
+      <div id="saved" class="notice ok" hidden>Saved. Thank you!</div>
+
+      <form id="profileForm" class="reg" novalidate>
+        <fieldset>
+          <legend>Your details</legend>
+          <dl class="details">
+            <dt>Registration ID</dt><dd id="pId"></dd>
+            <dt>Role</dt><dd id="pRole"></dd>
+            <dt>University</dt><dd id="pUni"></dd>
+            <dt>Email</dt><dd id="pEmail"></dd>
+          </dl>
+          <div class="row">
+            <div class="field third">
+              <label for="title">Title <span class="req">*</span></label>
+              <select id="title">
+                <option value="">Select…</option>
+                <option>Mr.</option><option>Ms.</option><option>Dr.</option>
+                <option>Asst. Prof.</option><option>Assoc. Prof.</option><option>Prof.</option>
+              </select>
+            </div>
+            <div class="field third">
+              <label for="first_name">First name <span class="req">*</span></label>
+              <input type="text" id="first_name" maxlength="80" autocomplete="given-name">
+              <span class="field-error"></span>
+            </div>
+            <div class="field third">
+              <label for="surname">Surname <span class="req">*</span></label>
+              <input type="text" id="surname" maxlength="80" autocomplete="family-name">
+              <span class="field-error"></span>
+            </div>
+          </div>
+          <p class="hint">Printed on your certificate exactly as written, in English letters: <strong id="certPreview"></strong></p>
+          <div class="field">
+            <label for="dietary">Dietary requirements <span class="muted">(optional)</span></label>
+            <input type="text" id="dietary" maxlength="200" placeholder="e.g. vegetarian, halal, no seafood">
+          </div>
+          <button type="submit" id="saveProfileBtn" class="btn navy">Save my details</button>
+          <p class="hint" style="margin-top:.8rem">Changes are possible until <strong id="regDeadline"></strong>. To change your university or email, contact the organisers.</p>
+        </fieldset>
+      </form>
+
+      <form id="presenterForm" class="reg" novalidate hidden>
+        <div id="lockedBox" class="notice info" hidden></div>
+        <fieldset>
+          <legend>Your case</legend>
+          <dl class="details">
+            <dt>Topic</dt><dd id="pTopic"></dd>
+            <dt>Registered title</dt><dd id="pCase"></dd>
+          </dl>
+          <div class="field">
+            <label for="specific_title">Specific title of your case presentation</label>
+            <input type="text" id="specific_title" maxlength="300" placeholder="e.g. Camouflage treatment of a skeletal Class III adult with a missing lateral incisor">
+            <span class="hint">Printed on your certificate and in the programme. Use normal sentence capitalisation.</span>
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="summary">Short summary <span class="muted">(optional, for the programme booklet)</span></label>
+            <textarea id="summary" rows="5" maxlength="1500" placeholder="Patient background, main problem list, treatment approach and outcome, in a few sentences. No identifying patient details."></textarea>
+            <span class="hint"><span id="summaryCount">0</span>/1500 characters</span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Slides</legend>
+          <div id="slidesStatus" class="notice info" hidden></div>
+          <div class="field">
+            <label for="slidesFile">Upload your slides <span class="muted">(PDF or PowerPoint, up to <span id="maxMb">20</span> MB)</span></label>
+            <input type="file" id="slidesFile" accept=".pdf,.ppt,.pptx,.key,application/pdf,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation">
+            <span class="hint">Uploading replaces any file you sent earlier. You can update your slides until the deadline.</span>
+            <span class="field-error"></span>
+          </div>
+          <button type="button" id="uploadBtn" class="btn navy" disabled>Upload slides</button>
+          <div class="progress" id="uploadProgress" hidden><div></div></div>
+          <div class="field" style="margin-top:1.2rem">
+            <label for="slides_link">…or share a link instead <span class="muted">(Google Drive, OneDrive, for larger files)</span></label>
+            <input type="text" id="slides_link" maxlength="500" placeholder="https://drive.google.com/…">
+            <span class="hint">Make sure the link is set to "Anyone with the link can view".</span>
+            <span class="field-error"></span>
+          </div>
+        </fieldset>
+
+        <button type="submit" id="saveBtn" class="btn navy">Save case details</button>
+        <p class="hint" id="updatedAt" style="margin-top:.8rem"></p>
+      </form>
+
+      <div class="card" id="attendanceCard" style="margin-top:1.6rem">
+        <h3>Can no longer attend?</h3>
+        <p class="hint">If your plans change, please cancel your registration so we can plan catering and seating. You can reinstate it on this page any time before <strong class="regDeadlineText"></strong>.</p>
+        <button type="button" id="cancelBtn" class="btn outline">I can no longer attend</button>
+        <div id="cancelConfirm" hidden style="margin-top:.8rem">
+          <p><strong>Cancel your registration?</strong> Your seat is released and no certificate will be issued.</p>
+          <button type="button" id="cancelYes" class="btn danger">Yes, cancel my registration</button>
+          <button type="button" id="cancelNo" class="btn outline">Keep it</button>
+        </div>
+      </div>
+    </div>
+
+    <aside class="preview">
+      <div class="card" style="margin-top:0">
+        <h3>Keep this page handy</h3>
+        <p class="hint">This link is personal. Save it on your phone so you can come back without searching your email.</p>
+        <div class="stack-btns">
+          <button type="button" id="installBtn" class="btn navy" hidden>Add to home screen</button>
+          <button type="button" id="shareBtn" class="btn navy" hidden>Share link to myself</button>
+          <button type="button" id="copyBtn" class="btn outline">Copy link</button>
+        </div>
+        <p class="hint" id="installTip" style="margin-top:.7rem"></p>
+      </div>
+      <div class="card checklist" id="presenterChecklist" hidden>
+        <h3>Presenter checklist</h3>
+        <ul>
+          <li id="ck1"><span class="dot"></span> Specific title added</li>
+          <li id="ck2"><span class="dot"></span> Summary written</li>
+          <li id="ck3"><span class="dot"></span> Slides uploaded or linked</li>
+        </ul>
+        <p class="hint">Deadline: <strong id="deadline"></strong></p>
+      </div>
+    </aside>
+  </div>
+
+</div></section>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <img class="footer-logo" src="assets/orthocu-white.png" alt="OrthoCU"><br>
+      <strong>6th Thai Orthodontic Resident Symposium 2026</strong><br>
+      Department of Orthodontics, Faculty of Dentistry, Chulalongkorn University
+    </div>
+    <div>
+      <span data-contact>Questions? <a data-mailto href="#"></a><br></span>
+      <span class="small">Registration is free · Deadline: <span data-config="REGISTRATION_DEADLINE"></span></span>
+    </div>
+  </div>
+</footer>
+<script src="js/config.js?v=20260922f"></script>
+<script src="js/main.js?v=20260922f"></script>
+<script src="js/my.js?v=20260922f"></script>
+</body>
+</html>

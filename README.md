@@ -81,6 +81,15 @@ Editing closes at `EDIT_DEADLINE` in `Code.gs`. Set `SITE_URL` in `Code.gs` to t
 address so the link in the email is correct. To resend a lost link, copy `token` from the Sheet row
 and build the URL above.
 
+## My registration page (every registrant)
+
+Every confirmation email carries a private link `my.html?id=REG-0001&key=…`. There the registrant can correct the
+name printed on the certificate, update dietary requirements, or cancel (and reinstate) until `REG_DEADLINE`;
+case presenters also manage their case title, summary and slides there (until `EDIT_DEADLINE`). Cancelled rows
+get `status = cancelled` in the Sheet and are skipped by the certificate generator. The page has a web-app manifest
+so it can be added to a phone's home screen; the link is also remembered in the browser. `presenter.html` now
+redirects to `my.html`.
+
 ## Case presenters
 
 A case presenter picks one of the presentation topics (`TOPICS` in `Code.gs`, mirrored in `js/config.js` as a fallback)

@@ -82,6 +82,15 @@ a { color: var(--navy); }
 .btn { display: inline-block; text-align: center; line-height: 1.3; padding: .8rem 1.5rem; border-radius: 999px; background: var(--gold); color: #fff; font-weight: 700; font-family: "Plus Jakarta Sans", sans-serif; text-decoration: none; border: 0; cursor: pointer; font-size: .95rem; letter-spacing: -0.005em; }
 .btn:hover { background: #c92a6d; }
 .btn.secondary { background: transparent; border: 1.5px solid rgba(255,255,255,.7); color: #fff; }
+.btn.outline { background: #fff; border: 1.5px solid var(--navy); color: var(--navy); }
+.btn.outline:hover { background: var(--blush); }
+.btn.danger { background: #b3261e; color: #fff; }
+.btn.danger:hover { background: #8f1d17; }
+.btn.small { padding: .45rem .9rem; font-size: .88rem; }
+.stack-btns { display: grid; gap: .5rem; }
+.stack-btns .btn { width: 100%; }
+.row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+@media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
 .btn.secondary:hover { background: rgba(255,255,255,.12); }
 .btn.navy { background: var(--navy); }
@@ -414,6 +423,7 @@ html:not([data-theme]) .brand span { border-left-color: var(--line); }
 
 /* readability fixes (audit 2026-09-16) */
 html:not([data-theme]) a.btn, html:not([data-theme]) :is(.card, form.reg, table, .success) a.btn, html[data-theme="light"] a.btn { color: #fff; }
+html:not([data-theme]) .btn.outline { color: var(--navy); background: #fff; }
 html:not([data-theme]) .hero a.btn.secondary { color: #fff; }
 html:not([data-theme]) :is(.card, form.reg, table, .success) a:not(.btn) { color: var(--pink-deep); }
 html:not([data-theme]) table.stack tr.block td.time { color: var(--pink-deep); }
