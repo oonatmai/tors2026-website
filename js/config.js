@@ -11,6 +11,6 @@ const SITE_CONFIG = {
   CASE_TITLE_DEADLINE: "14 December 2026",
   // Presentation topics (fallback if the backend cannot be reached; the live list with counts comes from the backend).
   TOPICS: ["Skeletal Class II (non-surgical)", "Skeletal Class III (non-surgical)", "Orthognathic surgery", "Clear aligner treatment",
-           "Growth modification / early treatment", "Interdisciplinary treatment", "Syndromic cases", "TMD / TMJ-related orthodontic treatment", "Asymmetry (non-surgical)"],
+           "Growth modification / early treatment", "Interdisciplinary treatment", "Syndromic cases", "TMD / TMJ-related orthodontic treatment", "Asymmetry (non-surgical)", "Other"],
   CONTACT_EMAIL: "",   // departmental address, e.g. the OrthoCU office. Leave "" to hide contact lines.
 };
