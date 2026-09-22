@@ -20,9 +20,36 @@
   function updatePreview() {}
 
   // ---- case-presenter status (which universities already have a case, and the total) ----
+  var topics = [];
+  function countText(n) { return n === 0 ? "not chosen yet" : n === 1 ? "1 presenter" : n + " presenters"; }
+  function fallbackTopics() { return (SITE_CONFIG.TOPICS || []).map(function (n) { return { name: n, count: 0 }; }); }
+  function renderTopics(list) {
+    topics = list || [];
+    var sel = $("topic"), keep = sel.value;
+    sel.innerHTML = '<option value="">Select a topic…</option>';
+    var ul = $("topicList"); ul.innerHTML = "";
+    topics.forEach(function (t) {
+      var o = document.createElement("option"); o.value = t.name; o.textContent = t.name; sel.appendChild(o);
+      var li = document.createElement("li");
+      li.innerHTML = '<span class="case-title"></span><span class="badge"></span>';
+      li.querySelector(".case-title").textContent = t.name;
+      var b = li.querySelector(".badge"); b.textContent = countText(t.count || 0);
+      b.className = "badge " + ((t.count || 0) === 0 ? "free" : "taken");
+      li.addEventListener("click", function () { sel.value = t.name; sel.dispatchEvent(new Event("change")); });
+      ul.appendChild(li);
+    });
+    if (keep) sel.value = keep;
+    highlightTopic();
+  }
+  function highlightTopic() {
+    var v = $("topic").value;
+    $("topicList").querySelectorAll("li").forEach(function (li, i) { li.classList.toggle("selected", topics[i] && topics[i].name === v); });
+  }
+  $("topic").addEventListener("change", function () { highlightTopic(); setError("topic", ""); });
   function renderStatus(data) {
     var ul = $("caseList"); ul.innerHTML = "";
-    if (!data) { $("caseTotal").textContent = "unavailable at the moment"; return; }
+    if (!data) { $("caseTotal").textContent = "unavailable at the moment"; renderTopics(fallbackTopics()); return; }
+    renderTopics(data.topics && data.topics.length ? data.topics : fallbackTopics());
     var n = data.total || 0, all = data.universities || [];
     var presenting = all.filter(function (u) { return !u.not_presenting; }).length;
     $("caseTotal").textContent = n === 0 ? "none yet" : n + " of " + presenting + " universities";
@@ -61,6 +88,8 @@
     r.addEventListener("change", function () {
       var presenting = this.value !== "participant";
       $("titleWrap").hidden = !presenting;
+      $("titleWrap2").hidden = !presenting;
+      $("topic").required = presenting;
       updatePreview();
     });
   });
@@ -98,6 +127,11 @@
     var role = form.querySelector("input[name=role]:checked");
     $("roleError").style.display = role ? "none" : "block";
     if (!role) ok = false;
+    if (role && role.value !== "participant") {
+      var badT = !$("topic").value;
+      setError("topic", badT ? "Please choose the topic of your case." : "");
+      if (badT) ok = false;
+    }
     $("consentError").style.display = $("consent").checked ? "none" : "block";
     if (!$("consent").checked) ok = false;
     return ok;
@@ -133,6 +167,7 @@
       university_other: clean($("university_other").value),
       position: $("position").value,
       role: role,
+      topic: role === "participant" ? "" : $("topic").value,
       presentation_title: role === "participant" ? "" : $("presentation_title").value.trim(),
       dietary: clean($("dietary").value),
       consent: $("consent").checked,
@@ -157,6 +192,8 @@
         var ct = data.case_title || "";
         $("okCase").textContent = ct || "to be added on your presenter page";
         $("okCase").previousElementSibling.hidden = $("okCase").hidden = data.role === "participant";
+        $("okTopic").textContent = data.topic || "";
+        $("okTopic").previousElementSibling.hidden = $("okTopic").hidden = data.role === "participant";
         if (data.presenter_url) { $("presenterBox").hidden = false; $("presenterLink").href = data.presenter_url; $("presenterLink").textContent = data.presenter_url; }
         $("okEmail").textContent = payload.email;
         $("formWrap").hidden = true;

@@ -234,6 +234,8 @@ input.invalid, select.invalid { border-color: var(--error); }
 .case-list li { display: flex; justify-content: space-between; align-items: center; gap: .8rem; padding: .6rem .8rem; border: 1px solid var(--line); border-radius: 10px; background: #fff; cursor: pointer; font-size: .92rem; transition: border-color .2s, background .2s; }
 .case-list li:hover { border-color: var(--pink); }
 .case-list.status li { cursor: default; }
+ul.topics { list-style: none; padding: 0; margin: .8rem 0 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+ul.topics li { background: #fff; color: var(--navy); border-radius: 999px; padding: .45rem .9rem; font-weight: 600; font-size: .92rem; box-shadow: 0 6px 16px rgba(0,0,0,.18); }
 .case-list.status li.na .case-title { color: var(--muted); }
 .case-list.status li:hover { border-color: var(--line); }
 .case-list li.selected { border-color: var(--navy); background: var(--blush); }
@@ -347,9 +349,9 @@ html:not([data-theme]) a { color: var(--pink-soft); }
 html:not([data-theme]) :is(.card, form.reg, table, .success) { color: var(--ink); }
 html:not([data-theme]) :is(.card, form.reg, table, .success) a { color: var(--pink); }
 html:not([data-theme]) .site-header { border-bottom: 0; }
-html:not([data-theme]) .hero { background: linear-gradient(120deg, rgba(201,23,94,.78) 0%, rgba(220,47,122,.62) 55%, rgba(230,84,154,.55) 100%), url(../assets/hero-sign.webp) calc(50% + 450px) 100% / auto 88% no-repeat #d8286f; padding-bottom: clamp(5rem, 12vw, 8.5rem); }
+html:not([data-theme]) .hero { background: linear-gradient(120deg, rgba(201,23,94,.78) 0%, rgba(220,47,122,.62) 55%, rgba(230,84,154,.55) 100%), url(../assets/hero-sign.webp?v=2) calc(50% + 450px) 100% / auto 88% no-repeat #d8286f; padding-bottom: clamp(5rem, 12vw, 8.5rem); }
 @media (min-width: 901px) { html:not([data-theme]) .hero-art { display: none; } }   /* the sign panel takes the arch's place on wide screens */
-@media (max-width: 900px) { html:not([data-theme]) .hero { background-size: auto 44%; background-position: center 100%; } }
+@media (max-width: 900px) { html:not([data-theme]) .hero { background-size: auto 46%; background-position: right -12% top 6%; } html:not([data-theme]) .hero-art { display: none; } }   /* phones/tablets: sign panel top-right behind the title, arch off to keep it calm */
 html:not([data-theme]) .hero-art { opacity: .1; }
 .hero { border-bottom: 2px solid var(--navy); }   /* hides the sub-pixel seam under the wave */
 html[data-theme="light"] .hero { border-bottom-color: var(--bg); }

@@ -23,7 +23,7 @@
   function render(p) {
     profile = p;
     $("loading").hidden = true; $("profile").hidden = false;
-    $("pName").textContent = p.name; $("pUni").textContent = p.university; $("pId").textContent = p.id; $("pCase").textContent = p.presentation_title || "not yet given";
+    $("pName").textContent = p.name; $("pUni").textContent = p.university; $("pId").textContent = p.id; $("pCase").textContent = p.presentation_title || "not yet given"; $("pTopic").textContent = p.topic || "–";
     $("specific_title").value = p.specific_title || p.presentation_title || ""; $("summary").value = p.summary || ""; $("slides_link").value = p.slides_link || "";
     $("maxMb").textContent = p.max_upload_mb || 20; $("deadline").textContent = p.deadline || "";
     $("updatedAt").textContent = p.updated_at ? "Last saved: " + new Date(p.updated_at).toLocaleString() : "";
