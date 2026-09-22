@@ -85,7 +85,8 @@ and build the URL above.
 
 A case presenter picks one of the presentation topics (`TOPICS` in `Code.gs`, mirrored in `js/config.js` as a fallback)
 and gives an optional case title, which can be added or changed on the presenter page until `EDIT_DEADLINE` (14 Dec 2026).
-The form shows how many presenters have chosen each topic. The form calls `?action=status`, which returns
+The form shows how many presenters have chosen each topic. "Other" asks for a short description (`topic_other` column);
+the descriptions already given are listed under Other in the form. The form calls `?action=status`, which returns
 the number of cases registered so far and, for each university, whether it already has a case presenter
 (one per university is enforced by the backend). Universities listed in `NOT_PRESENTING` in `Code.gs` (currently Chiang Mai University and Naresuan University)
 are shown as "not presenting this year", left out of the count, and cannot register a case presenter.

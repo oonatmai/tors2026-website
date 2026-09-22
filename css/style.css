@@ -234,6 +234,8 @@ input.invalid, select.invalid { border-color: var(--error); }
 .case-list li { display: flex; justify-content: space-between; align-items: center; gap: .8rem; padding: .6rem .8rem; border: 1px solid var(--line); border-radius: 10px; background: #fff; cursor: pointer; font-size: .92rem; transition: border-color .2s, background .2s; }
 .case-list li:hover { border-color: var(--pink); }
 .case-list.status li { cursor: default; }
+.case-list .case-title { display: flex; flex-direction: column; gap: .15rem; }
+.case-list .others { font-size: .8rem; color: var(--muted); font-weight: 500; }
 ul.topics { list-style: none; padding: 0; margin: .8rem 0 0; display: flex; flex-wrap: wrap; gap: .5rem; }
 ul.topics li { background: #fff; color: var(--navy); border-radius: 999px; padding: .45rem .9rem; font-weight: 600; font-size: .92rem; box-shadow: 0 6px 16px rgba(0,0,0,.18); }
 .case-list.status li.na .case-title { color: var(--muted); }

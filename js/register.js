@@ -35,6 +35,11 @@
       li.querySelector(".case-title").textContent = t.name;
       var b = li.querySelector(".badge"); b.textContent = countText(t.count || 0);
       b.className = "badge " + ((t.count || 0) === 0 ? "free" : "taken");
+      if (t.others && t.others.length) {                       // specific topics chosen under "Other"
+        var sm = document.createElement("small"); sm.className = "others";
+        sm.textContent = "Chosen so far: " + t.others.join("; ");
+        li.querySelector(".case-title").appendChild(sm);
+      }
       li.addEventListener("click", function () { sel.value = t.name; sel.dispatchEvent(new Event("change")); });
       ul.appendChild(li);
     });
@@ -45,7 +50,12 @@
     var v = $("topic").value;
     $("topicList").querySelectorAll("li").forEach(function (li, i) { li.classList.toggle("selected", topics[i] && topics[i].name === v); });
   }
-  $("topic").addEventListener("change", function () { highlightTopic(); setError("topic", ""); });
+  $("topic").addEventListener("change", function () {
+    highlightTopic(); setError("topic", "");
+    var other = this.value === "Other";
+    $("otherWrap2").hidden = !other; $("topic_other").required = other;
+    if (!other) { $("topic_other").value = ""; setError("topic_other", ""); }
+  });
   function renderStatus(data) {
     var ul = $("caseList"); ul.innerHTML = "";
     if (!data) { $("caseTotal").textContent = "unavailable at the moment"; renderTopics(fallbackTopics()); return; }
@@ -89,6 +99,7 @@
       var presenting = this.value !== "participant";
       $("titleWrap").hidden = !presenting;
       $("titleWrap2").hidden = !presenting;
+      if (!presenting) $("otherWrap2").hidden = true; else if ($("topic").value === "Other") $("otherWrap2").hidden = false;
       $("topic").required = presenting;
       updatePreview();
     });
@@ -131,6 +142,11 @@
       var badT = !$("topic").value;
       setError("topic", badT ? "Please choose the topic of your case." : "");
       if (badT) ok = false;
+      if ($("topic").value === "Other") {
+        var badO = !$("topic_other").value.trim();
+        setError("topic_other", badO ? "Please specify the topic of your case." : "");
+        if (badO) ok = false;
+      }
     }
     $("consentError").style.display = $("consent").checked ? "none" : "block";
     if (!$("consent").checked) ok = false;
@@ -168,6 +184,7 @@
       position: $("position").value,
       role: role,
       topic: role === "participant" ? "" : $("topic").value,
+      topic_other: role === "participant" || $("topic").value !== "Other" ? "" : $("topic_other").value.trim(),
       presentation_title: role === "participant" ? "" : $("presentation_title").value.trim(),
       dietary: clean($("dietary").value),
       consent: $("consent").checked,
