@@ -78,3 +78,19 @@
   update();
   var timer = setInterval(update, 1000);
 })();
+
+// ---- warm-up: fetch the live registration status in the background on every page, so the
+// registration form can show it instantly (saved for 10 minutes on this device) ----
+(function () {
+  if (typeof SITE_CONFIG === "undefined" || !SITE_CONFIG.SCRIPT_URL || SITE_CONFIG.SCRIPT_URL.indexOf("http") !== 0) return;
+  if (/register\.html$/.test(location.pathname)) return;      // the form fetches for itself
+  var KEY = "tors2026-status", MAX_AGE = 10 * 60 * 1000;
+  try { var c = JSON.parse(localStorage.getItem(KEY) || "null"); if (c && Date.now() - c.at < MAX_AGE) return; } catch (e) {}
+  var run = function () {
+    fetch(SITE_CONFIG.SCRIPT_URL + (SITE_CONFIG.SCRIPT_URL.indexOf("?") > -1 ? "&" : "?") + "action=status&t=" + Date.now())
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (d && d.ok) { try { localStorage.setItem(KEY, JSON.stringify({ at: Date.now(), data: d })); } catch (e) {} } })
+      .catch(function () {});
+  };
+  ("requestIdleCallback" in window) ? requestIdleCallback(run, { timeout: 2000 }) : setTimeout(run, 800);
+})();

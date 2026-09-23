@@ -56,9 +56,12 @@
     $("otherWrap2").hidden = !other; $("topic_other").required = other;
     if (!other) { $("topic_other").value = ""; setError("topic_other", ""); }
   });
-  function renderStatus(data) {
+  var STATUS_KEY = "tors2026-status";
+  function readStatusCache() { try { var c = JSON.parse(localStorage.getItem(STATUS_KEY) || "null"); return c && c.data && c.data.ok ? c : null; } catch (e) { return null; } }
+  function renderStatus(data, stale) {
     var ul = $("caseList"); ul.innerHTML = "";
     if (!data) { $("caseTotal").textContent = "unavailable at the moment"; renderTopics(fallbackTopics()); return; }
+    var note = $("statusNote"); if (note) note.hidden = !stale;
     renderTopics(data.topics && data.topics.length ? data.topics : fallbackTopics());
     var n = data.total || 0, all = data.universities || [];
     var presenting = all.filter(function (u) { return !u.not_presenting; }).length;
@@ -74,15 +77,23 @@
     });
   }
   async function loadStatus() {
+    // 1) instant: last live status saved on this device (also pre-fetched by other pages), else the built-in list
+    var cached = readStatusCache();
+    if (cached) renderStatus(cached.data, true);
+    else renderStatus({ ok: true, total: 0, topics: fallbackTopics(), universities: (SITE_CONFIG.UNIVERSITIES || []).map(function (n) { return { name: n, registered: false, not_presenting: (SITE_CONFIG.NOT_PRESENTING || []).indexOf(n) > -1 }; }) }, true);
+    // 2) then refresh from the backend in the background
     var url = SITE_CONFIG.SCRIPT_URL;
     if (url && url.indexOf("http") === 0) {
       try {
         var res = await fetch(url + (url.indexOf("?") > -1 ? "&" : "?") + "action=status&t=" + Date.now());
         var data = await res.json();
-        if (data.ok) { renderStatus(data); return; }
-      } catch (e) { /* fall through */ }
+        if (data.ok) {
+          try { localStorage.setItem(STATUS_KEY, JSON.stringify({ at: Date.now(), data: data })); } catch (e) {}
+          renderStatus(data, false); return;
+        }
+      } catch (e) { /* keep what is shown */ }
     }
-    renderStatus(null);
+    if (!cached) { var note = $("statusNote"); if (note) { note.textContent = "Live counts are unavailable at the moment; the list above may be out of date."; note.hidden = false; } }
   }
   loadStatus();
 

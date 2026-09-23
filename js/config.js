@@ -12,5 +12,9 @@ const SITE_CONFIG = {
   // Presentation topics (fallback if the backend cannot be reached; the live list with counts comes from the backend).
   TOPICS: ["Skeletal Class II (non-surgical)", "Skeletal Class III (non-surgical)", "Orthognathic surgery", "Clear aligner treatment",
            "Growth modification / early treatment", "Interdisciplinary treatment", "Syndromic cases", "TMD / TMJ-related orthodontic treatment", "Asymmetry (non-surgical)", "Other"],
+  // Mirrors of the backend lists, used only until the live status arrives.
+  UNIVERSITIES: ["Chulalongkorn University", "Mahidol University", "Chiang Mai University", "Khon Kaen University",
+                 "Prince of Songkla University", "Srinakharinwirot University", "Naresuan University", "Walailak University"],
+  NOT_PRESENTING: ["Chiang Mai University", "Naresuan University"],
   CONTACT_EMAIL: "",   // departmental address, e.g. the OrthoCU office. Leave "" to hide contact lines.
 };
