@@ -42,6 +42,7 @@
     $("pId").textContent = p.id; $("pUni").textContent = p.university; $("pEmail").textContent = p.email || "";
     $("pRole").textContent = presenter ? "Case presenter" : "Participant";
     $("title").value = p.title || ""; $("first_name").value = p.first_name || ""; $("surname").value = p.surname || ""; $("dietary").value = p.dietary || "";
+    $("position").value = p.position || ""; if ($("position").value !== (p.position || "")) { var o = document.createElement("option"); o.textContent = p.position; $("position").appendChild(o); $("position").value = p.position; }
     $("regDeadline").textContent = p.reg_deadline || "";
     document.querySelectorAll(".regDeadlineText").forEach(function (el) { el.textContent = p.reg_deadline || ""; });
     updateCertPreview();
@@ -54,7 +55,7 @@
     var regLocked = !!p.reg_locked;
     $("regLockedBox").hidden = !regLocked;
     if (regLocked) $("regLockedBox").textContent = "Changes closed on " + p.reg_deadline + ". Your details are final; contact the organisers for any change.";
-    ["title", "first_name", "surname", "dietary", "saveProfileBtn", "cancelBtn", "reinstateBtn"].forEach(function (i) { $(i).disabled = regLocked; });
+    ["title", "first_name", "surname", "position", "dietary", "saveProfileBtn", "cancelBtn", "reinstateBtn"].forEach(function (i) { $(i).disabled = regLocked; });
 
     // presenter section
     $("presenterForm").hidden = !presenter; $("presenterChecklist").hidden = !presenter;
@@ -110,10 +111,11 @@
       setError(i, msg); if (msg) ok = false;
     });
     if (!$("title").value) { showError("Please choose a title."); return; }
+    if (!$("position").value) { showError("Please choose your position."); return; }
     if (!ok) return;
     var btn = $("saveProfileBtn"); btn.disabled = true; btn.textContent = "Saving…";
     try {
-      var p = await api(null, { action: "profile_update", title: $("title").value, first_name: $("first_name").value.trim(), surname: $("surname").value.trim(), dietary: $("dietary").value.trim() });
+      var p = await api(null, { action: "profile_update", title: $("title").value, first_name: $("first_name").value.trim(), surname: $("surname").value.trim(), position: $("position").value, dietary: $("dietary").value.trim() });
       if (p.ok) { render(p); showSaved("Your details are saved. Your certificate will read: " + p.name + "."); } else showError(p.error || "Could not save.");
     } catch (e) { showError("Could not reach the server. Please try again."); }
     finally { btn.textContent = "Save my details"; btn.disabled = !!(profile && profile.reg_locked); }

@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
 <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&"IntersectionObserver" in window){document.documentElement.classList.add("js");setTimeout(function(){document.documentElement.classList.remove("js")},3000)}</script>
-<link rel="stylesheet" href="css/style.css?v=20261009a">
+<link rel="stylesheet" href="css/style.css?v=20261009b">
 </head>
 <body>
 <header class="site-header">
@@ -89,6 +89,15 @@
             </div>
           </div>
           <p class="hint">Printed on your certificate exactly as written, in English letters: <strong id="certPreview"></strong></p>
+          <div class="field">
+            <label for="position">Position <span class="req">*</span></label>
+            <select id="position">
+              <option value="">Select…</option>
+              <option>Resident – Year 1</option><option>Resident – Year 2</option><option>Resident – Year 3</option>
+              <option>Higher Graduate Diploma – Year 1</option><option>Higher Graduate Diploma – Year 2</option><option>Higher Graduate Diploma – Year 3</option>
+              <option>Faculty member</option><option>PhD student</option><option>Master's student</option><option>Other</option>
+            </select>
+          </div>
           <div class="field">
             <label for="dietary">Dietary requirements <span class="muted">(optional)</span></label>
             <input type="text" id="dietary" maxlength="200" placeholder="e.g. vegetarian, halal, no seafood">
@@ -191,8 +200,8 @@
     </div>
   </div>
 </footer>
-<script src="js/config.js?v=20261009a"></script>
-<script src="js/main.js?v=20261009a"></script>
-<script src="js/my.js?v=20261009a"></script>
+<script src="js/config.js?v=20261009b"></script>
+<script src="js/main.js?v=20261009b"></script>
+<script src="js/my.js?v=20261009b"></script>
 </body>
 </html>
