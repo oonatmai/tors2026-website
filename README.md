@@ -97,7 +97,7 @@ and gives an optional case title, which can be added or changed on the presenter
 The form shows how many presenters have chosen each topic. "Other" asks for a short description (`topic_other` column);
 the descriptions already given are listed under Other in the form. The form calls `?action=status`, which returns
 the number of cases registered so far and, for each university, whether it already has a case presenter
-(one per university is enforced by the backend). Universities listed in `NOT_PRESENTING` in `Code.gs` (currently Chiang Mai University and Naresuan University)
+(one per university is enforced by the backend). Universities listed in `NOT_PRESENTING` in `Code.gs` (currently Naresuan University)
 are shown as "not presenting this year", left out of the count, and cannot register a case presenter.
 
 ## Notes and limits
