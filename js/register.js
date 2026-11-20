@@ -6,7 +6,8 @@
   var $ = function (id) { return document.getElementById(id); };
 
   // ---- registration closed? ----
-  if (!SITE_CONFIG.REGISTRATION_OPEN) {
+  var closedByDate = SITE_CONFIG.REGISTRATION_CLOSES_ISO && Date.now() > new Date(SITE_CONFIG.REGISTRATION_CLOSES_ISO).getTime();
+  if (!SITE_CONFIG.REGISTRATION_OPEN || closedByDate) {
     $("formWrap").hidden = true;
     $("closedBox").hidden = false;
     return;

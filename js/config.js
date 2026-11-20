@@ -5,7 +5,8 @@ const SITE_CONFIG = {
   // Paste the Apps Script Web App URL here (ends with /exec). See README.md.
   SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxG7XtJMnSAxWiX2EfP3FXgvF10LuyyvUDhdgw_oYJ9qijz0nhQqTu1mRZNUWD6pGNg/exec",
   REGISTRATION_OPEN: true,
-  REGISTRATION_DEADLINE: "14 December 2026",
+  REGISTRATION_DEADLINE: "1 December 2026",
+  REGISTRATION_CLOSES_ISO: "2026-12-01T23:59:59+07:00",   // the form closes itself after this moment
   EVENT_DATE: "21 December 2026",
   EVENT_DATE_ISO: "2026-12-21T08:30:00+07:00",   // used by the countdown
   CASE_TITLE_DEADLINE: "14 December 2026",

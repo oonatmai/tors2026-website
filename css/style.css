@@ -92,6 +92,9 @@ form.reg fieldset { min-width: 0; }                                   /* fieldse
 input[type=file] { width: 100%; max-width: 100%; }
 #presenterForm, #attendanceCard { margin-top: 1.6rem; }
 .refreshing { opacity: .6; font-size: .85rem; }
+.notice.eligibility { border-left: 5px solid var(--pink); line-height: 1.5; margin-bottom: 1.6rem; }
+.notice.eligibility .th { display: inline-block; margin-top: .4rem; color: #4b5570; }
+html:not([data-theme]) .notice.eligibility { background: #fff; color: var(--ink); border-color: #e8c9d6; border-left-color: var(--pink); }
 .stack-btns .btn { width: 100%; }
 .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
 @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
