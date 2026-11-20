@@ -15,7 +15,7 @@ const SITE_CONFIG = {
            "Growth modification / early treatment", "Interdisciplinary treatment", "Syndromic cases", "TMD / TMJ-related orthodontic treatment", "Asymmetry (non-surgical)", "Other"],
   // Mirrors of the backend lists, used only until the live status arrives.
   UNIVERSITIES: ["Chulalongkorn University", "Mahidol University", "Chiang Mai University", "Khon Kaen University",
-                 "Prince of Songkla University", "Srinakharinwirot University", "Naresuan University", "Walailak University"],
+                 "Prince of Songkla University", "Srinakharinwirot University", "Naresuan University", "Walailak University", "Thammasat University"],
   NOT_PRESENTING: ["Naresuan University"],
   CONTACT_EMAIL: "",   // departmental address, e.g. the OrthoCU office. Leave "" to hide contact lines.
 };
